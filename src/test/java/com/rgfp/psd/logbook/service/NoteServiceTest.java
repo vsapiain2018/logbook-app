@@ -172,10 +172,5 @@ public class NoteServiceTest {
     }
     */
 
-    @Test
-    public void holiTest() {
-        assertEquals(4, 0);
-    }
-
 
 }
