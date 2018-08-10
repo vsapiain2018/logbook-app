@@ -65,6 +65,17 @@ public class NoteService {
 
     // should clone a note in the DB
     public void cloneNote(Long id) {
+        /*Note nota = new Note();
+        nota.setId(31);
+        nota.setTitle("titulo1");
+        nota.setContent("contenido titulo");
+        allNotes.add(nota);*/
+        Note note = new Note();
+        note.setId(4L);
+        note.setTitle("firstNote");
+        note.setContent("First note, with words java spring automation.");
+        noteRepository.save(new Note());
+
     }
 
     public List<String> getRepeatedWords() {

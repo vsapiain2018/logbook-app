@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
@@ -13,6 +14,9 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -141,5 +145,37 @@ public class NoteServiceTest {
         assertEquals(-1, topWords.indexOf("more"));
 
     }
+
+
+    @Test
+    public void cloneTest1() throws Exception {
+        //Caso en ingreso nada y captura excepcion
+        // Act
+        noteService.cloneNote(3L);
+
+        // Assert
+        verify(noteRepositoryMock).save(any(Note.class));
+        //noteService.findAll();
+        //assertEquals(4, noteService.getAllNotes().size());
+    }
+
+    /*@Test
+    public void cloneTest2() {
+        noteService.cloneNote(1L);
+
+        Note note = new Note();
+        note.setId(4L);
+        note.setTitle(n1.getTitle());
+        note.setContent(n1.getContent());
+
+        verify(noteRepositoryMock).save(eq(note));
+    }
+    */
+
+    @Test
+    public void holiTest() {
+        assertEquals(4, 0);
+    }
+
 
 }

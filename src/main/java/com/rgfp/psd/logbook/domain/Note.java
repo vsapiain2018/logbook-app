@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "notes")
@@ -48,12 +49,36 @@ public class Note {
         return content;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Note note = (Note) o;
+        return id == note.id &&
+                Objects.equals(title, note.title) &&
+                Objects.equals(timestamp, note.timestamp) &&
+                Objects.equals(content, note.content);
+    }
+
     public void setContent(String content) {
         this.content = content;
     }
 
     public String getSummary() {
         // not implemented
-        return "";
+        String contenido = "";
+        if (this.content !=null){
+            if (this.content.length()>=10){
+
+                contenido =   this.content.substring(0,10);
+            }else{
+                contenido=this.content;
+            }
+        }else{
+            contenido = "";
+        }
+
+
+        return contenido;
     }
 }
